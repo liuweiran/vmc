@@ -100,8 +100,6 @@
                 this.tabIndex++;
 
                 this.$emit('on-tab-change', this.tabIndex);
-
-                this.tabScroll();
             },
             onSwipeRight() {
                 if (this.tabIndex === 0) return;
@@ -111,8 +109,6 @@
                 this.tabIndex--;
 
                 this.$emit('on-tab-change', this.tabIndex);
-
-                this.tabScroll();
             },
             pageClass(i) {
                 if (i === this.tabIndex) {
@@ -203,6 +199,8 @@
                 var style = {};
                 style.width = (this.count + 2) * this.clientWidth + 'px';
                 style.transform = 'translate3d(-' + (this.tabIndex * this.clientWidth) + 'px, 0px, 0px)';
+
+                this.tabScroll();
 
                 return style;
             }
